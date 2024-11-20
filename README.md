@@ -1,4 +1,4 @@
-# Übersicht über die Cloud-Computing-Modelle
+# Projekt von Bojan, Toni und Fabian
 
 ## Modelle
 
