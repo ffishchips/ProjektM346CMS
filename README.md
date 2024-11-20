@@ -1,9 +1,8 @@
 # Projekt von Bojan, Toni und Fabian
 
-## Titel
-
+## Allgemeines
 - [Wordpress](Wordpress.md)
 
-## Titel
+## Dokumentation
 
 
