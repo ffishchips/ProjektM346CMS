@@ -5,4 +5,4 @@
 
 ## Dokumentation
 
--[Inhaltsverzeichnis](Inhaltsverzeichnis.md)
+- [Inhaltsverzeichnis](Inhaltsverzeichnis.md)
