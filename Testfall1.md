@@ -8,4 +8,4 @@ Verbindung von externen Laptop auf Website hat funktioniert.
 
 
 > [Zurück zu Testfälle](Testfaelle.md)  
-> [Website via Namen erreichen Test](Testfall2)
+> [Website via Namen erreichen Test](Testfall2.md)
