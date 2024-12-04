@@ -9,4 +9,4 @@ Verbindung von externen Laptop auf Website hat funktioniert.
 
 [Zurück zu Testfälle](Testfaelle.md) (left)
 [Website via Namen erreichen Test](Testfall2) (right)
-[^1]: Skibidi.
+Skibidi[^1]
