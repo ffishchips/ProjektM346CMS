@@ -1,2 +1,1 @@
-Link zu unserer Wordpress Seite: 
-<a href="http://98.85.9.176/" target="_blank" rel="noopener noreferrer">Visit 98.85.9.176</a>
+Link zu unserer Wordpress Seite: [Wordpress](95.85.5.176)
