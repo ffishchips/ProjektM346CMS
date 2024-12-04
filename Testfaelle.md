@@ -1,7 +1,7 @@
 ## Durchgeführte Testfälle 
 # Verbindung auf Website
-[Verbindungs Testfall](Verbindungtestfall.md)
-
+[Http & Https Verbindung Test](Testfall1.md)
+[Website via Namen erreichen Test](Testfall2.md)
 
 # Test2
 # Test3
