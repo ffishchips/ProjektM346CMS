@@ -4,8 +4,7 @@
 - [Wordpress](Wordpress.md)
 
 ## Dokumentation
-
-- [Inhaltsverzeichnis](Inhaltsverzeichnis.md)
+# Inhaltsverzeichnis
 - [Testfälle](Testfaelle.md)
 - 
 -
