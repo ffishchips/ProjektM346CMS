@@ -4,6 +4,8 @@
 [Wordpress](http://98.85.9.176/wordpress)
 
 ## Testfälle
-- [Testfälle](Testfaelle.md)
-- 
+- [HTTP & HTTPS Verbindung Test](Testfall1.md)
+- [Website via Namen erreichen Test](Testfall2.md)
 -
+-
+
