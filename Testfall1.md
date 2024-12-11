@@ -1,5 +1,4 @@
 # HTTP & HTTPS Verbindung Test  
-| Field                   | Data                       |
 |-------------------------|----------------------------|
 | Testzeitpunkt:          | 04.12.2024 11:10          |
 | Testperson:             | Fabian, Bojan und Toni    |
