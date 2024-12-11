@@ -1,6 +1,6 @@
 # Projekt von Bojan, Toni und Fabian
 
-## Allgemeines
+## Link 
 - [Wordpress](Wordpress.md)
 
 ## Testfälle
