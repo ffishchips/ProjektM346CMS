@@ -1,7 +1,7 @@
 # HTTP & HTTPS Verbindung Test  
-Testzeitpunkt:          04.12.2024 11:10  
-Testperson:             Fabian, Bojan und Toni  
-Spezielle Informationen: Keine  
+Testzeitpunkt:          04.12.2024 11:10
+Testperson:             Fabian, Bojan und Toni
+Spezielle Informationen: Keine
 
 
 
