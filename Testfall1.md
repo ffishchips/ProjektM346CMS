@@ -1,7 +1,7 @@
 # HTTP & HTTPS Verbindung Test  
 Testzeitpunkt:          &nbsp;&nbsp;&nbsp;&nbsp;04.12.2024 11:10  
-Testperson:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fabian, Bojan und Toni  
-Spezielle Informationen:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Keine  
+Testperson:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fabian, Bojan und Toni  
+Spezielle Informationen:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Keine  
 
 
 Verbindung von externen Laptop auf Website hat funktioniert.
