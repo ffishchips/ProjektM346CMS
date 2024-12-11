@@ -3,8 +3,7 @@
 ## Allgemeines
 - [Wordpress](Wordpress.md)
 
-## Dokumentation
-### Inhaltsverzeichnis
+## Testfälle
 - [Testfälle](Testfaelle.md)
 - 
 -
