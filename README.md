@@ -1,7 +1,7 @@
 # Projekt M346
-## Bojan
-## Fabian
-## Toni
+## Bojan Maljuric
+## Fabian Manser
+## Antonio Jon
 ## Link zur unserer Website
 
 ## Testfälle
