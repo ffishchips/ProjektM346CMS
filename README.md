@@ -1,8 +1,8 @@
 # Projekt M346
-## Bojan Maljuric
-## Fabian Manser
-## Antonio Jon
-## Link zur unserer Website
+Bojan Maljuric
+Fabian Manser
+Antonio Jon
+## Einleitung zum Projekt
 
 ## Testfälle
 - [HTTP & HTTPS Verbindung Test](Testfall1.md)
