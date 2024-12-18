@@ -2,10 +2,10 @@
 Badges
 badges
 badges
-## Einleitung zum Projekt
+## Einleitung 
 Wir haben eine AWS Wordpress installation vorgenommen und in diesem Github Repository ist die Beschreibung und Anleitung wie man dieselbe installation rekonstruieren kann um das selbe Ergebnis zu erzielen. Im Repository findet man die Testfälle Skripte die wir benutzt und getestet haben.
 # Inhaltsverzeichnis
-1. [Einleitung](#-Einleitung zum Projekt)
+1. [Einleitung](#-Einleitung)
 2. [Anforderung](#-Anforderung)
 3. [Installation](#-Installation)
 4. [Testfälle](#-Testfälle)
