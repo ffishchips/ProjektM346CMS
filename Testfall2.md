@@ -5,4 +5,4 @@ Spezielle Informationen:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 > [Zurück zu Testfälle](Testfaelle.md)  
 > [Zurück zu HTTP & HTTPS Verbindung Test](Testfall1.md)
-> [Website via Namen erreichen Test](Testfall2.md)
+> [Test](Testfall3.md)
