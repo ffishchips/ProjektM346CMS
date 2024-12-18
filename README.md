@@ -1,6 +1,6 @@
 # Projekt M346
-[Bojan Maljuric](https://img.shields.io/badge/<Bojan_Maljuric>-<FF4500>?style=<STYLE>)
-badges
+[![Bojan Maljuric](https://img.shields.io/badge/Bojan_Maljuric-FF4500?style=for-the-badge)](https://github.com/ffishchips)
+badges 
 badges
 ## Einleitung 
 Wir haben eine AWS Wordpress installation vorgenommen und in diesem Github Repository ist die Beschreibung und Anleitung wie man dieselbe installation rekonstruieren kann um das selbe Ergebnis zu erzielen. Im Repository findet man die Testfälle Skripte die wir benutzt und getestet haben.
