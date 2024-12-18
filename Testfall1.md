@@ -13,5 +13,5 @@ Verbindung von externen Laptop auf Website hat funktioniert.
 
 
 
-> [Zurück zu Testfälle](Testfaelle.md)  
+> [Zurück zum ReadMe file](README.md)  
 > [Website via Namen erreichen Test](Testfall2.md)
