@@ -42,6 +42,18 @@ Mit einem AWS Befehl wie aws s3 ls können Sie die Verbindung testen
 Gehen Sie in den Ordner hinein und führen Sie das Skript install.sh mit dem Befehl ./install.sh aus.
 Alles wird nun automatisiert für Sie installiert.
 
+7. Wordpress mit Datenbank verbinden
+
+Um Wordpress benutzen zu können müssen Sie per IP der Wordpress Instance <IP_WorpressServer>/wordpress folgende Informationen eingeben.
+
+Datenbank-Name: wordpress
+Benutzername: wpadmin
+Passwort: WordpressTest
+Datenbankhost: <IP_MySQLServer
+Tabellen-Präfix: Ihnen überlassen
+
+Falls Sie die richtige IP eingetippt haben, sollte die Verbindung geklappt haben und Sie können mit Wordpress loslegen.
+
 # 📃Testfälle
 - [HTTP & HTTPS Verbindung Test](Testfall1.md)
 - [Website via Namen erreichen Test](Testfall2.md)
