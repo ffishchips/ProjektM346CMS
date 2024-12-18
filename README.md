@@ -26,6 +26,7 @@ Das Starten des AWS kann einige Minuten dauern. Bis dorthin können Sie bis zum 
 Kopieren Sie den [BFT_WordPress_Installer](BFT_WordPress_Installer) auf Ihre AWS Instance. Achten Sie darauf, dass die Ordnerstrukter beibehalten wird.
 
 3. Rechte vergeben
+
 Falls die Dateien kein Ausführrecht besitzen (sollte der Fall sein), können Sie mit dem Befehl z.B chmod +x Datei.sh das Skript ausführbar machen. Am besten bei allen Skript das Ausführrecht einschalten
 
 4. Credentials ändern
