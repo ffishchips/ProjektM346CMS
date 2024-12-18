@@ -1,5 +1,5 @@
 # Projekt M346
-Badges
+[Bojan Maljuric](https://img.shields.io/badge/<Bojan_Maljuric>-<FF4500>?style=<STYLE>)
 badges
 badges
 ## Einleitung 
