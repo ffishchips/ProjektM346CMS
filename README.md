@@ -5,11 +5,12 @@
 ## 🎢Einleitung 
 Wir haben eine AWS Wordpress installation vorgenommen und in diesem Github Repository ist die Beschreibung und Anleitung wie man dieselbe installation rekonstruieren kann um das selbe Ergebnis zu erzielen. Im Repository findet man die Testfälle Skripte die wir benutzt und getestet haben.
 # 🗂️Inhaltsverzeichnis
-1. [Einleitung](#-Einleitung)
-2. [Anforderung](#-Anforderung)
-3. [Installation](#-Installation)
-4. [Testfälle](#-Testfälle)
+1. [Einleitung](#-einleitung)
+2. [Anforderung](#-anforderung)
+3. [Installation](#-installation)
+4. [Testfälle](#-testfälle)
 # 🤔Anforderung 
+Sie benötigen folgende Anforderungen zu erfüllen um das Skript erfolgreich ausführen zu können.  
 
 # 🪛Installation
 Toni
