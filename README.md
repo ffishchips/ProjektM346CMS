@@ -3,14 +3,7 @@ Badges
 badges
 badges
 ## Einleitung zum Projekt
-hier schreiben
-# Inhaltsverzeichnis
-1. [Voraussetzungen](#-Anforderung)
-2. [Voraussetzungen](#-Testfälle)
-3. [Voraussetzungen](#-Installation)
-# Anforderung 
-
-# Installation
+Wir haben eine AWS Wordpress installation vorgenommen und in diesem Github Repository ist die Beschreibung und Anleitung wie man dieselbe installation rekonstruieren kann um das selbe Ergebnis zu erzielen. Im Repository findet man die Testfälle Skripte die wir benutzt und getestet haben.
 
 ## Testfälle
 - [HTTP & HTTPS Verbindung Test](Testfall1.md)
