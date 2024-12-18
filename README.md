@@ -11,9 +11,14 @@ Wir haben eine AWS Wordpress installation vorgenommen und in diesem Github Repos
 4. [Testfälle](#-testfälle)
 # 🤔Anforderung 
 Sie benötigen folgende Anforderungen zu erfüllen um das Skript erfolgreich ausführen zu können.  
+- Ein AWS-Account mit administrativen Berechtigungen.  
+- Git ist installiert.
+- Ein Webbrowser für den Zugriff auf die WordPress-Seite.
 
 # 🪛Installation
-Toni
+1. Git Repository 
+Klonen Sie unsere Repository:  
+git clone https://github.com/ffishchips/ProjektM346CMS
 # 📃Testfälle
 - [HTTP & HTTPS Verbindung Test](Testfall1.md)
 - [Website via Namen erreichen Test](Testfall2.md)
