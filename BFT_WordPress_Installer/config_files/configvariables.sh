@@ -1,9 +1,3 @@
 KEY_NAME="bft-key"
 SEC_GROUP_NAME="bft-sec-group"
-CONFIG_STEP=done
-INSTANCE_ID1=i-042ae4031696d9d68
-PUBLIC_IP1="18.213.96.16"
-MySQL_installation_File="./config_files/mysqlinstall.sh"
-INSTANCE_ID2=i-08714ef0556ce11e3
-PUBLIC_IP2="54.81.153.163"
-Wordpress_installation_File="./config_files/wordpressinstall.sh"
+CONFIG_STEP=1
