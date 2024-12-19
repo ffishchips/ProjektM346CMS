@@ -2,7 +2,7 @@
 set -e  # Beendet das Skript, wenn ein Fehler auftritt
 
 # Variablen aus der Konfigurationsdatei laden
-source ./config_files/variables.sh
+source ./config_files/configvariables.sh
 
 # Sicherstellen, dass das Zielverzeichnis existiert
 if [ ! -d ~/ec2webserver ]; then
@@ -11,7 +11,7 @@ if [ ! -d ~/ec2webserver ]; then
 fi
 
 # Überprüfen, ob das WordPress-Installationsskript vorhanden ist
-Wordpress_installation_File="./config_files/wpinstall.sh"
+Wordpress_installation_File="./config_files/wordpressinstall.sh"
 if [ ! -f $Wordpress_installation_File ]; then
     echo "Fehler: $Wordpress_installation_File konnte nicht gefunden werden. Bitte überprüfen Sie den Pfad oder erstellen Sie die Datei."
     exit 1
@@ -73,9 +73,9 @@ done
 echo "Gefundene öffentliche IP-Adresse: $PUBLIC_IP2"
 
 # Übertragen des WordPress-Installationsskripts auf die Instanz
-echo "Übertrage das wpinstall.sh-Skript auf die Instanz..."
-scp -i ~/.ssh/$KEY_NAME.pem -o StrictHostKeyChecking=accept-new ./config_files/wpinstall.sh ubuntu@"$PUBLIC_IP2":/home/ubuntu/wpinstall.sh
-scp -i ~/.ssh/$KEY_NAME.pem -o StrictHostKeyChecking=accept-new ./config_files/variables.sh ubuntu@"$PUBLIC_IP2":/home/ubuntu/variables.sh
+echo "Übertrage das wordpressinstall.sh-Skript auf die Instanz..."
+scp -i ~/.ssh/$KEY_NAME.pem -o StrictHostKeyChecking=accept-new ./config_files/wordpressinstall.sh ubuntu@"$PUBLIC_IP2":/home/ubuntu/wordpressinstall.sh
+scp -i ~/.ssh/$KEY_NAME.pem -o StrictHostKeyChecking=accept-new ./config_files/configvariables.sh ubuntu@"$PUBLIC_IP2":/home/ubuntu/configvariables.sh
 
 # Sicherstellen, dass die Dateien erfolgreich hochgeladen wurden
 if [ $? -ne 0 ]; then
@@ -89,10 +89,10 @@ echo "--------------------------------------------------------------------------
 # Ausführen des WordPress-Installationsskripts auf der Instanz
 echo "Führe das WordPress-Installationsskript auf der Instanz aus..."
 ssh -i ~/.ssh/$KEY_NAME.pem -o StrictHostKeyChecking=accept-new ubuntu@"$PUBLIC_IP2" << 'EOF'
-    echo "Setze Berechtigungen für wpinstall.sh..."
-    chmod +x /home/ubuntu/wpinstall.sh
-    echo "Starte die Ausführung von wpinstall.sh..."
-    /home/ubuntu/wpinstall.sh
+    echo "Setze Berechtigungen für wordpressinstall.sh..."
+    chmod +x /home/ubuntu/wordpressinstall.sh
+    echo "Starte die Ausführung von wordpressinstall.sh..."
+    /home/ubuntu/wordpressinstall.sh
 EOF
 
 echo "-------------------------------------------------------------------------------------"
@@ -106,7 +106,6 @@ else
 fi
 
 # Variablen in die Konfigurationsdatei schreiben
-echo "INSTANCE_ID2=$INSTANCE_ID2" >> ./config_files/variables.sh
-echo "PUBLIC_IP2=\"$PUBLIC_IP2\"" >> ./config_files/variables.sh
-echo "Wordpress_installation_File=\"$Wordpress_installation_File\"" >> ./config_files/variables.sh
-
+echo "INSTANCE_ID2=$INSTANCE_ID2" >> ./config_files/configvariables.sh
+echo "PUBLIC_IP2=\"$PUBLIC_IP2\"" >> ./config_files/configvariables.sh
+echo "Wordpress_installation_File=\"$Wordpress_installation_File\"" >> ./config_files/configvariables.sh

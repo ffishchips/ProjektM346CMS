@@ -2,7 +2,7 @@
 set -e  # Beendet das Skript bei Fehlern
 
 # Variablen definieren
-source /home/ubuntu/variables.sh
+source /home/ubuntu/configvariables.sh
 
 # Passwörter für MySQL
 MYSQL_ROOT_PASSWORD="Bojan$Fabian"

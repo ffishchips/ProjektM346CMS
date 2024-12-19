@@ -2,7 +2,7 @@
 set -e  # Beendet das Skript, wenn ein Fehler auftritt
 
 # Variablen aus der Konfigurationsdatei laden
-source ./config_files/variables.sh
+source ./config_files/configvariables.sh
 
 # Überprüfen, welcher Konfigurationsschritt als nächstes ausgeführt werden soll
 if [[ "$CONFIG_STEP" == "1" ]]; then
@@ -26,10 +26,10 @@ if [[ "$CONFIG_STEP" == "1" ]]; then
     echo "Die neue öffentliche IP-Adresse für Instanz 1 lautet: $NEW_PUBLIC_IP"
 
     # Aktualisierung von PUBLIC_IP1 in der Konfigurationsdatei
-    sed -i "s|^PUBLIC_IP1=.*|PUBLIC_IP1=\"$NEW_PUBLIC_IP\"|" ./config_files/variables.sh
+    sed -i "s|^PUBLIC_IP1=.*|PUBLIC_IP1=\"$NEW_PUBLIC_IP\"|" ./config_files/configvariables.sh
 
     # Aktualisieren des Konfigurationsstatus
-    sed -i "s|^CONFIG_STEP=.*|CONFIG_STEP=2|" ./config_files/variables.sh
+    sed -i "s|^CONFIG_STEP=.*|CONFIG_STEP=2|" ./config_files/configvariables.sh
     echo "Die Konfiguration von Instanz 1 wurde abgeschlossen."
 
     # Tabellarische Ausgabe der Instanz-ID und zugewiesenen öffentlichen IP
@@ -60,10 +60,10 @@ elif [[ "$CONFIG_STEP" == "2" ]]; then
     echo "Die neue öffentliche IP-Adresse für Instanz 2 lautet: $NEW_PUBLIC_IP"
 
     # Aktualisierung von PUBLIC_IP2 in der Konfigurationsdatei
-    sed -i "s|^PUBLIC_IP2=.*|PUBLIC_IP2=\"$NEW_PUBLIC_IP\"|" ./config_files/variables.sh
+    sed -i "s|^PUBLIC_IP2=.*|PUBLIC_IP2=\"$NEW_PUBLIC_IP\"|" ./config_files/configvariables.sh
 
     # Konfigurationsstatus auf "abgeschlossen" setzen
-    sed -i "s|^CONFIG_STEP=.*|CONFIG_STEP=done|" ./config_files/variables.sh
+    sed -i "s|^CONFIG_STEP=.*|CONFIG_STEP=done|" ./config_files/configvariables.sh
     echo "Die Konfiguration von Instanz 2 wurde abgeschlossen."
     echo""
 

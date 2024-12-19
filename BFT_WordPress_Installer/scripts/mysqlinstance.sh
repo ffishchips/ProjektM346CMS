@@ -2,7 +2,7 @@
 set -e  # Beendet das Skript, wenn ein Fehler auftritt
 
 # Variablen aus der Konfigurationsdatei laden
-source ./config_files/variables.sh
+source ./config_files/configvariables.sh
 
 # Sicherstellen, dass das Zielverzeichnis existiert
 if [ ! -d ~/ec2mysqlserver ]; then
@@ -75,7 +75,7 @@ echo "Gefundene öffentliche IP-Adresse: $PUBLIC_IP1"
 # Übertragen des MySQL-Installationsskripts auf die Instanz
 echo "Übertrage das mysqlinstall.sh-Skript auf die Instanz..."
 scp -i ~/.ssh/$KEY_NAME.pem -o StrictHostKeyChecking=accept-new ./config_files/mysqlinstall.sh ubuntu@"$PUBLIC_IP1":/home/ubuntu/mysqlinstall.sh
-scp -i ~/.ssh/$KEY_NAME.pem -o StrictHostKeyChecking=accept-new ./config_files/variables.sh ubuntu@"$PUBLIC_IP1":/home/ubuntu/variables.sh
+scp -i ~/.ssh/$KEY_NAME.pem -o StrictHostKeyChecking=accept-new ./config_files/configvariables.sh ubuntu@"$PUBLIC_IP1":/home/ubuntu/configvariables.sh
 
 # Sicherstellen, dass die Dateien erfolgreich hochgeladen wurden
 if [ $? -ne 0 ]; then
@@ -106,7 +106,7 @@ else
 fi
 
 # Variablen in die Konfigurationsdatei schreiben
-echo "INSTANCE_ID1=$INSTANCE_ID1" >> ./config_files/variables.sh
-echo "PUBLIC_IP1=\"$PUBLIC_IP1\"" >> ./config_files/variables.sh
-echo "MySQL_installation_File=\"$MySQL_installation_File\"" >> ./config_files/variables.sh
+echo "INSTANCE_ID1=$INSTANCE_ID1" >> ./config_files/configvariables.sh
+echo "PUBLIC_IP1=\"$PUBLIC_IP1\"" >> ./config_files/configvariables.sh
+echo "MySQL_installation_File=\"$MySQL_installation_File\"" >> ./config_files/configvariables.sh
 

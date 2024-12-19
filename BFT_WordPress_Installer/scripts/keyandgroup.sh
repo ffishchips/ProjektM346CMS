@@ -2,7 +2,7 @@
 set -e  # Beendet das Skript, wenn ein Fehler auftritt
 
 # Variablen aus der Konfigurationsdatei laden
-source ./config_files/variables.sh
+source ./config_files/configvariables.sh
 
 # Key Pair erstellen
 echo "Überprüfe, ob das Key Pair existiert..."

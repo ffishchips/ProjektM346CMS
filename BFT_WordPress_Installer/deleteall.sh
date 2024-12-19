@@ -2,8 +2,8 @@
 set -e  # Skript wird bei Auftreten eines Fehlers sofort beendet
 
 # Definieren und Laden von Variablen
-source ./config_files/variables.sh
-FILE_PATH="./config_files/variables.sh"
+source ./config_files/configvariables.sh
+FILE_PATH="./config_files/configvariables.sh"
 
 # EC2-Instanzen suchen und beenden
 echo "Suche nach EC2-Instanzen, die der Sicherheitsgruppe $SEC_GROUP_NAME zugeordnet sind..."
