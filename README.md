@@ -49,11 +49,11 @@ Alles wird nun automatisiert für Sie installiert.
 
 Um Wordpress benutzen zu können müssen Sie per IP der Wordpress Instance <IP_WorpressServer>/wordpress folgende Informationen eingeben.
 
-Datenbank-Name: wordpress
-Benutzername: wpadmin
-Passwort: WordpressTest
-Datenbankhost: <IP_MySQLServer
-Tabellen-Präfix: Ihnen überlassen
+- Datenbank-Name: wordpress
+- Benutzername: wpadmin
+- Passwort: WordpressTest
+- Datenbankhost: <IP_MySQLServer
+- Tabellen-Präfix: Ihnen überlassen
 
 Falls Sie die richtige IP eingetippt haben, sollte die Verbindung geklappt haben und Sie können mit Wordpress loslegen.
 
