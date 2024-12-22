@@ -6,9 +6,9 @@ Testumgebung: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Testvorgehen  
 1. Überprüfung, ob das Skript ohne Fehler ausgeführt wird.  
 2. Validierung der Automatisierungsschritte:  
--Erstellung des Key-Pairs.  
--Erstellung der Sicherheitsgruppe und deren Regeln.  
--Starten einer EC2-Instanz.  
+- Erstellung des Key-Pairs.  
+- Erstellung der Sicherheitsgruppe und deren Regeln.  
+- Starten einer EC2-Instanz.  
 3. Kontrolle der erzeugten Ressourcen (Key-Pair, Sicherheitsgruppe, EC2-Instanz) über die AWS Management Console.  
 
 Testergebnis  
