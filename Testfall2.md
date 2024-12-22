@@ -4,6 +4,7 @@ Testperson:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
 Spezielle Informationen:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Keine  
 
 ![image](Images/test2.png)
+![image](Images/wordpress1.png)
 
 > [Zurück zum ReadMe file](README.md)  
 > [Zurück zu HTTP & HTTPS Verbindung Test](Testfall1.md)
