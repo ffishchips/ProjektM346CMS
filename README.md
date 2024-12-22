@@ -9,17 +9,17 @@
 # 🎢Einleitung 
 Wir haben eine AWS Wordpress installation vorgenommen und in diesem Github Repository ist die Beschreibung und Anleitung wie man dieselbe installation rekonstruieren kann um das selbe Ergebnis zu erzielen. Im Repository findet man die Testfälle Skripte die wir benutzt und getestet haben.
 # 🗂️Inhaltsverzeichnis
-1. [Einleitung](#-einleitung)
-2. [Anforderung](#-anforderung)
-3. [Installation](#-installation)
-4. [Testfälle](#-testfälle)
+1. [Einleitung](#einleitung)
+2. [Anforderung](#anforderung)
+3. [Installation](#installation)
+4. [Testfälle](#testfälle)
 # 🤔Anforderung 
 Sie benötigen folgende Anforderungen zu erfüllen um das Skript erfolgreich ausführen zu können.  
 - Ein AWS-Account mit administrativen Berechtigungen, sowie eine AWS instance mit aws Befehlen.  
 - Git desktop ist installiert.
 - Ein Webbrowser für den Zugriff auf die WordPress-Seite.
 
-# Erklärung der Skripts  
+# 🔧 Erklärung der Skripts  
 ## Skript: deleteall.sh
 Das Skript deleteall.sh dient dazu, AWS-Ressourcen zu bereinigen, die durch ein bestimmtes Setup erstellt wurden. Es arbeitet in mehreren Schritten:  
 
