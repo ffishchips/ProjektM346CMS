@@ -12,9 +12,9 @@ Testvorgehen
 3. Kontrolle der erzeugten Ressourcen (Key-Pair, Sicherheitsgruppe, EC2-Instanz) über die AWS Management Console.  
 
 Testergebnis  
--Das Skript wurde erfolgreich ausgeführt.  
--Alle Automatisierungsschritte wurden korrekt durchgeführt:  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Das Key-Pair wurde erstellt und sicher gespeichert.  
+- Das Skript wurde erfolgreich ausgeführt.  
+- Alle Automatisierungsschritte wurden korrekt durchgeführt:  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Das Key-Pair wurde erstellt und sicher gespeichert.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Die Sicherheitsgruppe mit den entsprechenden Regeln (Ports 22, 80) wurde angelegt.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Die EC2-Instanz wurde gestartet und ist erreichbar.
 
