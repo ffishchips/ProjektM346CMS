@@ -15,8 +15,8 @@ Testergebnis
 - Das Skript wurde erfolgreich ausgeführt.  
 - Alle Automatisierungsschritte wurden korrekt durchgeführt:  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Das Key-Pair wurde erstellt und sicher gespeichert.  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Die Sicherheitsgruppe mit den entsprechenden Regeln (Ports 22, 80) wurde angelegt.  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Die EC2-Instanz wurde gestartet und ist erreichbar.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Die Sicherheitsgruppe mit den entsprechenden Regeln (Ports 22, 80) wurde angelegt.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Die EC2-Instanz wurde gestartet und ist erreichbar.  
 
 Fazit  
 Das Skript funktioniert fehlerfrei und erfüllt seine Aufgaben wie erwartet.  
