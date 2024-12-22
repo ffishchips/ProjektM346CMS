@@ -17,8 +17,9 @@ Empfehlung: Keine weiteren Maßnahmen erforderlich.
 
 
 ![image](Images/wordpress1.png)
-![image](Images/wordpress3.png)
 ![image](Images/wordpress2.png)
+![image](Images/wordpress3.png)
+
 
 > [Zurück zum ReadMe file](README.md)  
 > [Zurück zu HTTP & HTTPS Verbindung Test](Testfall1.md)
