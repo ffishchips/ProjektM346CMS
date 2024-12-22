@@ -19,7 +19,8 @@ Sie benötigen folgende Anforderungen zu erfüllen um das Skript erfolgreich aus
 - Git desktop ist installiert.
 - Ein Webbrowser für den Zugriff auf die WordPress-Seite.
 
-# Erklärung der Skripts
+# Erklärung der Skripts  
+## Skript: deleteall.sh
 Das Skript deleteall.sh dient dazu, AWS-Ressourcen zu bereinigen, die durch ein bestimmtes Setup erstellt wurden. Es arbeitet in mehreren Schritten:  
 
    1. Variablen laden: Es lädt Konfigurationsvariablen aus einer Datei (configvariables.sh). 
@@ -35,7 +36,7 @@ Das Skript deleteall.sh dient dazu, AWS-Ressourcen zu bereinigen, die durch ein 
    6. Konfigurationsdatei aktualisieren: Es löscht die bestehende Konfigurationsdatei und erstellt sie neu mit Standardwerten. 
 
 Das Skript ist so gestaltet, dass es bei Fehlern sofort abbricht (set -e), und gibt während der Ausführung Statusmeldungen aus.  
-
+## Skript: awsinstall.sh
 Das Skript awsinstall.sh dient dazu, eine AWS-Infrastruktur zu erstellen und einzurichten. Es arbeitet folgende Schritte ab: 
 
 ASCII-Art-Anzeige: Zu Beginn zeigt das Skript eine ASCII-Art-Ausgabe zur Begrüssung und als visuellen Hinweis. 
