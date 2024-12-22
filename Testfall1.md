@@ -14,4 +14,4 @@ Verbindung von externen Laptop auf Website hat funktioniert.
 
 
 > [Zurück zum ReadMe file](README.md)  
-> [Website via Namen erreichen Test](Testfall2.md)
+> [Wordpress Verbindung zum Datenbankserver funktioniert](Testfall2.md)
