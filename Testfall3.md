@@ -19,6 +19,7 @@ Testergebnis
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Die EC2-Instanz wurde gestartet und ist erreichbar.  
 
 Fazit  
+
 Das Skript funktioniert fehlerfrei und erfüllt seine Aufgaben wie erwartet.  
 Empfehlung: Das Skript kann produktiv genutzt werden. Es wird empfohlen, regelmäßig Backups der Konfigurationsdateien durchzuführen.
 
