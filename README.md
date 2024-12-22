@@ -59,6 +59,6 @@ Falls Sie die richtige IP eingetippt haben, sollte die Verbindung geklappt haben
 
 # 📃Testfälle
 - [HTTP & HTTPS Verbindung Test](Testfall1.md)
-- [Website via Namen erreichen Test](Testfall2.md)
+- [Wordpress Verbindung zum Datenbankserver funktioniert](Testfall2.md)
 - [Test](Testfall3.md)
 -
