@@ -7,4 +7,4 @@ Spezielle Informationen:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 > [Zurück zum ReadMe file](README.md)  
 > [Zurück zu HTTP & HTTPS Verbindung Test](Testfall1.md)
-> [Test](Testfall3.md)
+> [Weiter zu:Funktionalität des Skripts install.sh](Testfall3.md)

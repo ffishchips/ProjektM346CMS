@@ -4,14 +4,15 @@ Testperson:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb
 Spezielle Informationen:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Keine  
 
 
-Verbindung von externen Laptop auf Website hat funktioniert.
-![image](https://github.com/user-attachments/assets/9860b031-f38a-4caf-8e18-3c0c6e50ee7d)
-
-
-
+Verbindung von externen Laptop auf Website hat funktioniert mit Http mit Https funktioniert es nicht.
+HTTP:  
+![image](https://github.com/user-attachments/assets/9860b031-f38a-4caf-8e18-3c0c6e50ee7d)  
+  
+HTTPS:  
+![image](Images/HTTPS.png)
 
 
 
 
 > [Zurück zum ReadMe file](README.md)  
-> [Wordpress Verbindung zum Datenbankserver funktioniert](Testfall2.md)
+> [Weiter zu: Wordpress Verbindung zum Datenbankserver funktioniert](Testfall2.md)
