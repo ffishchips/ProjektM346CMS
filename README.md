@@ -16,9 +16,523 @@ Wir haben eine AWS Wordpress installation vorgenommen und in diesem Github Repos
 # 🤔Anforderung 
 Sie benötigen folgende Anforderungen zu erfüllen um das Skript erfolgreich ausführen zu können.  
 - Ein AWS-Account mit administrativen Berechtigungen, sowie eine AWS instance mit aws Befehlen.  
-- Git ist installiert.
+- Git desktop ist installiert.
 - Ein Webbrowser für den Zugriff auf die WordPress-Seite.
 
+# Erklärung der Skripts
+Das Skript deleteall.sh dient dazu, AWS-Ressourcen zu bereinigen, die durch ein bestimmtes Setup erstellt wurden. Es arbeitet in mehreren Schritten:  
+
+   1. Variablen laden: Es lädt Konfigurationsvariablen aus einer Datei (configvariables.sh). 
+
+   2. EC2-Instanzen entfernen: Es sucht nach EC2-Instanzen, die mit einer bestimmten Sicherheitsgruppe (SEC_GROUP_NAME) verknüpft sind, beendet und löscht diese. 
+
+   3. Sicherheitsgruppe entfernen: Es überprüft, ob die Sicherheitsgruppe existiert, und löscht sie, falls vorhanden. 
+
+   4. Key Pair löschen: Es entfernt das Key Pair (KEY_NAME) und die zugehörige lokale .pem-Datei, falls sie existiert. 
+
+   5. Elastic IP-Adressen freigeben: Es listet alle Elastic IP-Adressen auf und gibt sie frei. 
+
+   6. Konfigurationsdatei aktualisieren: Es löscht die bestehende Konfigurationsdatei und erstellt sie neu mit Standardwerten. 
+
+Das Skript ist so gestaltet, dass es bei Fehlern sofort abbricht (set -e), und gibt während der Ausführung Statusmeldungen aus.  
+
+Das Skript awsinstall.sh dient dazu, eine AWS-Infrastruktur zu erstellen und einzurichten. Es arbeitet folgende Schritte ab: 
+
+   1. ASCII-Art-Anzeige: Zu Beginn zeigt das Skript eine ASCII-Art-Ausgabe zur Begrüßung und als visuellen Hinweis. 
+
+   2. Sicherheitsgruppe und Key Pair erstellen: 
+
+   - Führt ein separates Skript (keyandgroup.sh) aus, um eine AWS-Sicherheitsgruppe und ein Key Pair zu erstellen. 
+
+   3. MySQL-Instanz starten und einrichten: 
+
+   - Führt das Skript mysqlinstance.sh aus, um eine AWS-MySQL-Instanz zu erstellen und einzurichten. 
+
+   - Wenn dieses Skript fehlschlägt, wird der Prozess abgebrochen. 
+
+   4. Elastic IP für MySQL konfigurieren: 
+
+   - Führt das Skript elasticIP.sh aus, um der MySQL-Instanz eine Elastic IP-Adresse zuzuweisen. 
+
+   5. Webserver-Instanz starten und einrichten: 
+
+   - Führt das Skript webinstance.sh aus, um eine AWS-Webserver-Instanz zu erstellen und einzurichten. 
+
+   - Auch hier wird der Prozess bei einem Fehler abgebrochen. 
+
+   6. Elastic IP für Webserver konfigurieren: 
+
+   - Führt das Skript elasticIP.sh erneut aus, um dem Webserver eine Elastic IP-Adresse zuzuweisen. 
+
+   7. Abschlussmeldung: 
+
+   - Gibt eine Erfolgsmeldung aus, wenn alle Schritte erfolgreich abgeschlossen wurden. 
+
+Das Skript ist darauf ausgelegt, den gesamten Installationsprozess für eine AWS-basierte Infrastruktur automatisch durchzuführen. 
+
+  
+
+Die Datei configvariables.sh enthält grundlegende Konfigurationsvariablen, die von anderen Skripten genutzt werden. Hier ist eine kurze Erklärung der einzelnen Variablen: 
+
+   1. KEY_NAME="bft-key" 
+
+   - Der Name des AWS Key Pairs, das für den Zugriff auf EC2-Instanzen genutzt wird. 
+
+   2. SEC_GROUP_NAME="bft-sec-group" 
+
+   - Der Name der AWS-Sicherheitsgruppe, die für die Konfiguration von Netzwerkzugriffen (z. B. Ports und IP-Beschränkungen) verwendet wird. 
+
+   3. CONFIG_STEP=1 
+
+   - Ein Zähler oder Indikator für den aktuellen Konfigurationsschritt, vom elasticIP.sh. 
+
+Diese Datei wird in den Skripten mit source eingebunden, um die Variablen zentral zu verwalten und Änderungen leicht vornehmen zu können. 
+
+  
+
+Das Skript mysqlinstall.sh richtet eine MySQL-Datenbankserver-Instanz ein, konfiguriert sie und bereitet sie für die Nutzung vor. Hier die Schritte, die es ausführt: 
+
+   1. Variablen definieren: 
+
+   - Es lädt globale Konfigurationsvariablen aus configvariables.sh. 
+
+   - Es definiert Passwörter für den MySQL-Root-Benutzer und den WordPress-Admin-Benutzer. 
+
+   2. MySQL installieren: 
+
+   - Aktualisiert die Paketliste (sudo apt update -y). 
+
+   - Installiert den MySQL-Server mit sudo apt install -y mysql-server. 
+
+   3. MySQL-Dienst starten: 
+
+   - Startet und aktiviert den MySQL-Dienst, damit er beim Booten automatisch gestartet wird. 
+
+   4. Datenbank und Benutzer erstellen: 
+
+   - Erstellt eine Datenbank namens wordpress. 
+
+   - Legt einen Benutzer wpadmin an, mit dem Passwort aus der Variablen MYSQL_WP_ADMIN_USER_PASSWORD. 
+
+   - Erteilt diesem Benutzer alle Rechte auf die Datenbank wordpress. 
+
+   5. Remote-Zugriff konfigurieren: 
+
+   - Prüft die Datei /etc/mysql/mysql.conf.d/mysqld.cnf und ändert die Einstellung bind-address auf 0.0.0.0, damit MySQL Verbindungen von externen Clients akzeptiert. 
+
+   - Startet den MySQL-Dienst neu, um die Änderungen zu übernehmen. 
+
+   6. Abschlussmeldung: 
+
+   - Gibt eine Erfolgsmeldung aus, dass die MySQL-Installation und -Konfiguration abgeschlossen ist, und nennt die eingerichtete Datenbank (wordpress) und den Benutzer (wpadmin). 
+
+Dieses Skript ist darauf ausgelegt, MySQL für lokale und Remote-Verwendungen vorzubereiten, insbesondere in einem Setup, das eine WordPress-Installation unterstützt. 
+
+  
+
+Das Skript wordpressinstall.sh dient zur Installation und Einrichtung von WordPress auf einem Apache-Webserver. Es führt folgende Schritte aus: 
+
+   1. Systempakete aktualisieren: 
+
+   - Aktualisiert die Paketliste mit sudo apt-get update -y. 
+
+   2. Apache installieren: 
+
+   - Installiert den Apache-Webserver mit sudo apt install -y apache2. 
+
+   3. PHP und MySQL-Module für PHP installieren: 
+
+   - Installiert PHP sowie die MySQL-Module für die Kommunikation zwischen PHP und MySQL. 
+
+   4. WordPress herunterladen: 
+
+   - Lädt die neueste Version von WordPress von der offiziellen Webseite herunter (wget https://wordpress.org/latest.tar.gz). 
+
+   5. WordPress entpacken und verschieben: 
+
+   - Entpackt das heruntergeladene Archiv. 
+
+   - Verschiebt die WordPress-Dateien in das Verzeichnis /var/www/html, das als Root-Verzeichnis für Apache dient. 
+
+   6. Dateiberechtigungen setzen: 
+
+   - Setzt die Besitzerrechte auf www-data, den Standardbenutzer von Apache. 
+
+   - Stellt sicher, dass die Dateien mit passenden Zugriffsrechten (chmod -R 755) versehen sind. 
+
+   7. Apache neu starten: 
+
+   - Startet den Apache-Dienst neu, damit die Änderungen wirksam werden. 
+
+   8. SSL-Zertifikate einrichten (optional): 
+
+   - Installiert Certbot, ein Tool zur einfachen Einrichtung von SSL-Zertifikaten. 
+
+   - Hinweis: Für SSL wird eine gültige Domain benötigt. Alternativ kann dieser Schritt übersprungen werden. 
+
+   9. Abschlussmeldung: 
+
+   - Gibt eine Erfolgsmeldung aus und weist darauf hin, dass WordPress über die öffentliche IP-Adresse der EC2-Instanz zugänglich ist. 
+
+Das Skript richtet WordPress auf einer EC2-Instanz ein und sorgt dafür, dass es einsatzbereit ist, wobei SSL optional eingerichtet werden kann. 
+
+  
+
+Das Skript elasticIP.sh dient zur Konfiguration von Elastic IP-Adressen (EIPs) in AWS und weist diese zwei EC2-Instanzen schrittweise zu. Hier ist eine Erklärung der Funktionsweise: 
+
+Ablauf des Skripts 
+
+   1. Initialisierung und Lade der Konfiguration: 
+
+   - Lädt Variablen wie CONFIG_STEP, INSTANCE_ID1, INSTANCE_ID2, und SEC_GROUP_NAME aus der Datei configvariables.sh. 
+
+   2. Konfigurationsschritt prüfen: 
+
+   - Das Skript prüft, welcher Schritt der Konfiguration (1 oder 2) aktuell ausgeführt werden muss, basierend auf der Variablen CONFIG_STEP. 
+
+Schritt 1: Elastic IP für INSTANCE_ID1 
+
+   - Fordert eine neue Elastic IP-Adresse an und speichert deren Allocation ID. 
+
+   - Weist die Elastic IP-Adresse der ersten Instanz (INSTANCE_ID1) zu. 
+
+   - Ruft die öffentliche IP-Adresse der zugewiesenen Elastic IP ab. 
+
+   - Aktualisiert die Konfigurationsdatei configvariables.sh:  
+
+   - Speichert die neue öffentliche IP in der Variablen PUBLIC_IP1. 
+
+   - Setzt CONFIG_STEP=2, um zum nächsten Schritt zu wechseln. 
+
+   - Gibt eine Tabelle mit der Instanz-ID und der zugewiesenen öffentlichen IP aus. 
+
+Schritt 2: Elastic IP für INSTANCE_ID2 
+
+   - Analog zu Schritt 1:  
+
+   - Fordert eine neue Elastic IP an, weist sie der zweiten Instanz (INSTANCE_ID2) zu, und speichert die zugehörige öffentliche IP. 
+
+   - Aktualisiert die Konfigurationsdatei configvariables.sh:  
+
+   - Speichert die neue öffentliche IP in PUBLIC_IP2. 
+
+   - Setzt CONFIG_STEP=done, um den Konfigurationsprozess als abgeschlossen zu markieren. 
+
+   - Gibt eine Tabelle mit der zweiten Instanz-ID und deren öffentlicher IP aus. 
+
+Sicherheitsgruppenregel für MySQL: 
+
+   - Erlaubt eingehenden TCP-Verkehr auf Port 3306 (MySQL) ausschließlich von der neuen IP-Adresse (NEW_PUBLIC_IP) der zweiten Instanz. 
+
+Wenn CONFIG_STEP=done: 
+
+   - Gibt eine Nachricht aus, dass alle Elastic IPs bereits konfiguriert sind, und beendet das Skript. 
+
+Besonderheiten und Hinweise: 
+
+   - Das Skript gewährleistet durch die set -e-Anweisung, dass es bei Fehlern sofort abbricht. 
+
+   - Änderungen an der Datei configvariables.sh werden direkt vorgenommen, um den Fortschritt zwischen den Schritten zu speichern. 
+
+   - Tabellenansichten und farbige Ausgaben (z. B. \e[1m) verbessern die Benutzerfreundlichkeit. 
+
+   - Die Sicherheitsgruppe wird dynamisch aktualisiert, um den Datenbankzugriff zu beschränken. 
+
+Das Skript automatisiert die Zuweisung von Elastic IPs und sorgt für Sicherheit und Nachvollziehbarkeit der Änderungen. 
+
+  
+
+Das Skript keyandgroup.sh erstellt ein AWS-Schlüsselpaar und eine Sicherheitsgruppe, falls diese noch nicht existieren. Im Detail funktioniert es wie folgt: 
+
+Funktionalitäten des Skripts 
+
+   1. Initialisierung:  
+
+   - Das Skript verwendet die configvariables.sh, um Schlüsselvariablen wie KEY_NAME und SEC_GROUP_NAME zu laden. 
+
+   - Die Option set -e sorgt dafür, dass das Skript bei einem Fehler sofort beendet wird.  
+
+1. Erstellen eines Key Pairs: 
+
+   - Prüfen, ob das Key Pair bereits existiert:  
+
+   - Es wird geprüft, ob eine Datei mit dem Namen ~/.ssh/$KEY_NAME.pem existiert. 
+
+   - Falls nicht, wird das Key Pair mit dem AWS CLI-Befehl create-key-pair erstellt. 
+
+   - Das private Schlüsselmaterial wird in der Datei ~/.ssh/$KEY_NAME.pem gespeichert. 
+
+   - Die Datei erhält restriktive Berechtigungen (chmod 400), um Sicherheit zu gewährleisten. 
+
+   - Wenn das Key Pair bereits existiert:  
+
+   - Gibt das Skript eine Nachricht aus und überspringt die Erstellung. 
+
+2. Erstellen einer Sicherheitsgruppe: 
+
+    Prüfen, ob die Sicherheitsgruppe existiert:  
+
+    Mit dem AWS CLI-Befehl describe-security-groups wird überprüft, ob die Gruppe bereits vorhanden ist. 
+
+    Erstellen der Sicherheitsgruppe:  
+
+    Wenn die Sicherheitsgruppe nicht existiert, wird sie mit dem Namen und einer Beschreibung angelegt. 
+
+    Zwei Regeln für den eingehenden Datenverkehr (ingress) werden hinzugefügt:  
+
+    HTTP (Port 80): Ermöglicht Zugriff von überall (0.0.0.0/0). 
+
+    SSH (Port 22): Ermöglicht Zugriff von überall (0.0.0.0/0). 
+
+    Wenn die Sicherheitsgruppe bereits existiert:  
+
+    Gibt das Skript eine Nachricht aus und überspringt diesen Schritt. 
+
+Form 
+
+Sicherheitsaspekte: 
+
+    Schlüsselschutz:  
+
+    Der private Schlüssel wird lokal gespeichert und geschützt (chmod 400). 
+
+    Offene Ports:  
+
+    Standardmäßig erlaubt das Skript weltweiten Zugriff auf Port 80 und Port 22. Dies kann ein Sicherheitsrisiko sein und sollte auf spezifische IP-Bereiche eingeschränkt werden, wenn möglich. 
+
+Form 
+
+Ausgabe und Abschluss: 
+
+    Informiert den Benutzer über den Fortschritt und den Status der Key Pair- und Sicherheitsgruppen-Erstellung. 
+
+    Bei Abschluss wird eine Erfolgsmeldung angezeigt. 
+
+Form 
+
+Das Skript bietet eine solide Grundlage, um Schlüsselpaare und Sicherheitsgruppen für AWS EC2-Instanzen effizient einzurichten. 
+
+  
+
+Das Skript mysqlinstance.sh dient zur Automatisierung der Erstellung und Konfiguration einer AWS EC2-Instanz mit MySQL. Es beinhaltet Schritte zur Instanzerstellung, Konfiguration und Bereitstellung des MySQL-Servers auf der Instanz. 
+
+Form 
+
+Ablauf und Funktionalitäten 
+
+1. Vorbereitung 
+
+    Laden von Konfigurationsvariablen:  
+
+    configvariables.sh wird verwendet, um Variablen wie KEY_NAME und SEC_GROUP_NAME zu laden. 
+
+    Verzeichnis erstellen:  
+
+    Sicherstellen, dass das Verzeichnis ~/ec2mysqlserver existiert, um Dateien lokal zu speichern. 
+
+    MySQL-Installationsskript prüfen:  
+
+    Überprüfen, ob das MySQL-Installationsskript mysqlinstall.sh im Verzeichnis config_files existiert. 
+
+Form 
+
+2. EC2-Instanz starten 
+
+    Instanz mit AWS CLI erstellen:  
+
+    aws ec2 run-instances startet eine EC2-Instanz mit den übergebenen Parametern:  
+
+    AMI ID: ami-08c40ec9ead489470 (Amazon Linux 2 oder Ubuntu-Image). 
+
+    Instance Type: t2.micro (kostenloses Kontingent). 
+
+    Key Pair und Sicherheitsgruppe: Definiert durch KEY_NAME und SEC_GROUP_NAME. 
+
+    Instanz-ID extrahieren:  
+
+    Mit --query 'Instances[0].InstanceId' wird die Instanz-ID abgerufen. 
+
+    Öffentliche IP-Adresse abrufen:  
+
+    Mit aws ec2 describe-instances wird die öffentliche IP der Instanz ermittelt. 
+
+Form 
+
+3. Statusprüfung 
+
+    Warten auf Bereitschaft der Instanz:  
+
+    Eine Schleife überprüft regelmäßig den Systemstatus und Instanzstatus der EC2-Instanz (ok bedeutet, dass sie betriebsbereit ist). 
+
+    Wenn beide Werte auf ok stehen, wird fortgefahren. 
+
+Form 
+
+4. MySQL-Installationsskript hochladen 
+
+    Hochladen von Dateien auf die Instanz:  
+
+    Mithilfe von scp wird das mysqlinstall.sh-Skript und die configvariables.sh auf die Instanz kopiert. 
+
+    Das Skript prüft, ob das Hochladen erfolgreich war. 
+
+Form 
+
+5. MySQL-Installationsskript ausführen 
+
+    Remote-SSH-Ausführung:  
+
+    Das mysqlinstall.sh-Skript wird per SSH auf der Instanz ausgeführt. 
+
+    Die Ausführung erfolgt unter dem Benutzer ubuntu. 
+
+    Vor der Ausführung wird das Skript ausführbar gemacht (chmod +x). 
+
+Form 
+
+6. Abschluss 
+
+    Erfolg prüfen:  
+
+    Das Skript überprüft, ob das MySQL-Installationsskript erfolgreich ausgeführt wurde. 
+
+    Bei Erfolg werden die Instanz-ID und die öffentliche IP-Adresse in die configvariables.sh geschrieben. 
+
+Form 
+
+Sicherheitsaspekte 
+
+    Sicherheitsgruppen:  
+
+    Die Instanz verwendet die Sicherheitsgruppe $SEC_GROUP_NAME, die entsprechende Ports (z. B. 22 für SSH) freischalten sollte. 
+
+    Schlüsselsicherheit:  
+
+    Der private Schlüssel (~/.ssh/$KEY_NAME.pem) wird verwendet und durch Berechtigungen geschützt (chmod 400). 
+
+    IP-Beschränkungen:  
+
+    Zugriffe auf die EC2-Instanz können weiter eingeschränkt werden, indem die CIDR-Blöcke der Sicherheitsgruppe angepasst werden. 
+
+Form 
+
+Dieses Skript bietet eine robuste Grundlage für die Automatisierung des Aufsetzens einer MySQL-Server-Umgebung in AWS. 
+
+  
+
+Das Skript webinstance.sh automatisiert die Bereitstellung einer EC2-Instanz für die Installation und Konfiguration eines WordPress-Webservers. Es umfasst Schritte wie das Erstellen der Instanz, die Übertragung des Installationsskripts und die Ausführung von Befehlen zur Einrichtung des Webservers. 
+
+Form 
+
+Ablauf und Funktionalitäten 
+
+1. Vorbereitung 
+
+    Laden von Konfigurationsvariablen:  
+
+    Mit configvariables.sh werden Variablen wie KEY_NAME und SEC_GROUP_NAME geladen. 
+
+    Verzeichnis erstellen:  
+
+    Das Verzeichnis ~/ec2webserver wird erstellt, falls es nicht existiert. 
+
+    WordPress-Installationsskript prüfen:  
+
+    Überprüfung, ob das WordPress-Installationsskript wordpressinstall.sh existiert. Falls nicht, wird das Skript beendet. 
+
+Form 
+
+2. EC2-Instanz starten 
+
+    Instanz mit AWS CLI erstellen:  
+
+    aws ec2 run-instances startet eine neue EC2-Instanz mit den folgenden Parametern:  
+
+    AMI ID: ami-08c40ec9ead489470 (Amazon Linux 2 oder Ubuntu). 
+
+    Instance Type: t2.micro. 
+
+    Key Pair und Sicherheitsgruppe: Definiert durch KEY_NAME und SEC_GROUP_NAME. 
+
+    Tagging: Der Instanz wird das Tag Name=Webserver zugewiesen. 
+
+    Instanz-ID extrahieren:  
+
+    Die Instanz-ID wird aus der Antwort extrahiert und in der Variable INSTANCE_ID2 gespeichert. 
+
+    Öffentliche IP-Adresse abrufen:  
+
+    Mit aws ec2 describe-instances wird die öffentliche IP-Adresse der Instanz in PUBLIC_IP2 gespeichert. 
+
+Form 
+
+3. Statusprüfung 
+
+    Bereitschaft der Instanz prüfen:  
+
+    Eine Schleife überprüft regelmäßig, ob die Instanz betriebsbereit ist, indem sie den Systemstatus und Instanzstatus abfragt. Sobald beide Werte ok sind, wird fortgefahren. 
+
+ 
+
+4. WordPress-Installationsskript hochladen 
+
+    Skript übertragen:  
+
+    Das WordPress-Installationsskript wordpressinstall.sh und die Konfigurationsdatei configvariables.sh werden per scp auf die Instanz kopiert. 
+
+    Erfolg prüfen:  
+
+    Überprüfung, ob die Dateien erfolgreich hochgeladen wurden. Im Fehlerfall wird das Skript beendet. 
+
+ 
+
+5. WordPress-Installationsskript ausführen 
+
+    Remote-SSH-Ausführung:  
+
+    Das Skript wordpressinstall.sh wird per SSH auf der EC2-Instanz ausgeführt. 
+
+    Vor der Ausführung wird sichergestellt, dass das Skript ausführbar ist (chmod +x). 
+
+ 
+
+6. Abschluss 
+
+    Erfolg prüfen:  
+
+    Falls die Ausführung des WordPress-Installationsskripts erfolgreich war, wird eine Erfolgsmeldung angezeigt. 
+
+    Konfigurationsvariablen speichern:  
+
+    Die Instanz-ID und die öffentliche IP-Adresse der Webserver-Instanz werden in die Datei configvariables.sh geschrieben. 
+
+ 
+
+Sicherheitsaspekte 
+
+    Sicherheitsgruppen:  
+
+    Es wird eine Sicherheitsgruppe verwendet, die den Zugriff auf den Webserver (z. B. HTTP-Port 80) und SSH (Port 22) ermöglicht. Diese Regeln sollten überprüft werden. 
+
+    Schlüsselverwaltung:  
+
+    Der private Schlüssel (~/.ssh/$KEY_NAME.pem) wird verwendet und ist durch Berechtigungen geschützt (chmod 400). 
+
+    IP-Einschränkungen:  
+
+    Erwägen Sie, den Zugriff auf die EC2-Instanz auf bestimmte IP-Adressen einzuschränken. 
+
+ 
+
+Dieses Skript bietet eine solide Basis für die Bereitstellung und Konfiguration eines Webservers mit WordPress auf AWS. 
+
+ 
+
+
+
+
+
+Das Skript ist so gestaltet, dass es bei Fehlern sofort abbricht (set -e), und gibt während der Ausführung Statusmeldungen aus. 
 # ⬇️Installation
 1. Starten Sie den AWS-Lab
 
