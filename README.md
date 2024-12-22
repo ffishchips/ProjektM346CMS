@@ -219,7 +219,7 @@ Schritt 2: Elastic IP für INSTANCE_ID2
 
 Sicherheitsgruppenregel für MySQL: 
 
-   - Erlaubt eingehenden TCP-Verkehr auf Port 3306 (MySQL) ausschließlich von der neuen IP-Adresse (NEW_PUBLIC_IP) der zweiten Instanz. 
+   - Erlaubt eingehenden TCP-Verkehr auf Port 3306 (MySQL) ausschliesslich von der neuen IP-Adresse (NEW_PUBLIC_IP) der zweiten Instanz. 
 
 Wenn CONFIG_STEP=done: 
 
@@ -379,15 +379,15 @@ Ablauf und Funktionalitäten
 
    - Sicherheitsgruppen:  
 
-&nbsp;&nbsp;Die Instanz verwendet die Sicherheitsgruppe $SEC_GROUP_NAME, die entsprechende Ports (z. B. 22 für SSH) freischalten sollte. 
+&nbsp;&nbsp;&nbsp;Die Instanz verwendet die Sicherheitsgruppe $SEC_GROUP_NAME, die entsprechende Ports (z. B. 22 für SSH) freischalten sollte. 
 
    - Schlüsselsicherheit:  
 
-&nbsp;&nbsp;Der private Schlüssel (~/.ssh/$KEY_NAME.pem) wird verwendet und durch Berechtigungen geschützt (chmod 400). 
+&nbsp;&nbsp;&nbsp;Der private Schlüssel (~/.ssh/$KEY_NAME.pem) wird verwendet und durch Berechtigungen geschützt (chmod 400). 
 
    - IP-Beschränkungen:  
 
-&nbsp;&nbsp;Zugriffe auf die EC2-Instanz können weiter eingeschränkt werden, indem die CIDR-Blöcke der Sicherheitsgruppe angepasst werden. 
+&nbsp;&nbsp;&nbsp;Zugriffe auf die EC2-Instanz können weiter eingeschränkt werden, indem die CIDR-Blöcke der Sicherheitsgruppe angepasst werden. 
 
 Dieses Skript bietet eine robuste Grundlage für die Automatisierung des Aufsetzens einer MySQL-Server-Umgebung in AWS. 
 
