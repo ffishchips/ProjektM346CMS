@@ -379,15 +379,15 @@ Ablauf und Funktionalitäten
 
    - Sicherheitsgruppen:  
 
-&nbsp;&nbsp;&nbsp;Die Instanz verwendet die Sicherheitsgruppe $SEC_GROUP_NAME, die entsprechende Ports (z. B. 22 für SSH) freischalten sollte. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Die Instanz verwendet die Sicherheitsgruppe $SEC_GROUP_NAME, die entsprechende Ports (z. B. 22 für SSH) freischalten sollte. 
 
    - Schlüsselsicherheit:  
 
-&nbsp;&nbsp;&nbsp;Der private Schlüssel (~/.ssh/$KEY_NAME.pem) wird verwendet und durch Berechtigungen geschützt (chmod 400). 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Der private Schlüssel (~/.ssh/$KEY_NAME.pem) wird verwendet und durch Berechtigungen geschützt (chmod 400). 
 
    - IP-Beschränkungen:  
 
-&nbsp;&nbsp;&nbsp;Zugriffe auf die EC2-Instanz können weiter eingeschränkt werden, indem die CIDR-Blöcke der Sicherheitsgruppe angepasst werden. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zugriffe auf die EC2-Instanz können weiter eingeschränkt werden, indem die CIDR-Blöcke der Sicherheitsgruppe angepasst werden. 
 
 Dieses Skript bietet eine robuste Grundlage für die Automatisierung des Aufsetzens einer MySQL-Server-Umgebung in AWS. 
 
