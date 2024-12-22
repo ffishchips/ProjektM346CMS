@@ -3,6 +3,9 @@
 [![Fabian Manser](https://img.shields.io/badge/Fabian_Manser-4169E1?style=for-the-badge)](https://github.com/githubpro772)  
 [![Antoni Jon](https://img.shields.io/badge/Antoni_Jon-4169E1?style=for-the-badge)](https://github.com/Antonio-Jon)
 # Repository aufbau  
+- README.md -> Ist das Haupt file 
+- TestfallX.md -> Unsere Testfall files
+
 # 🎢Einleitung 
 Wir haben eine AWS Wordpress installation vorgenommen und in diesem Github Repository ist die Beschreibung und Anleitung wie man dieselbe installation rekonstruieren kann um das selbe Ergebnis zu erzielen. Im Repository findet man die Testfälle Skripte die wir benutzt und getestet haben.
 # 🗂️Inhaltsverzeichnis
